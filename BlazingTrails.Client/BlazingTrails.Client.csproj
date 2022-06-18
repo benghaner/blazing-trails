@@ -12,15 +12,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Layout\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <UpToDateCheckInput Remove="Features\Home\HomePage.razor" />
   </ItemGroup>
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Features\Home\HomePage.razor" />
+    <_ContentIncludedByDefault Remove="Features\Layout\Header.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Features\Layout\Header.razor" />
   </ItemGroup>
 
 </Project>
