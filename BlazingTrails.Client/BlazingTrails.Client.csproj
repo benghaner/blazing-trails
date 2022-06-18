@@ -17,11 +17,20 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Features\Home\HomePage.razor" />
+    <_ContentIncludedByDefault Remove="Features\Home\TrailCard.razor" />
     <_ContentIncludedByDefault Remove="Features\Layout\Header.razor" />
   </ItemGroup>
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Features\Layout\Header.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\trails\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Features\Home\TrailCard.razor" />
   </ItemGroup>
 
 </Project>
