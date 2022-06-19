@@ -18,6 +18,7 @@
 
 	<ItemGroup>
 		<_ContentIncludedByDefault Remove="Features\Home\HomePage.razor" />
+		<_ContentIncludedByDefault Remove="Features\Home\SearchFilter.razor" />
 		<_ContentIncludedByDefault Remove="Features\Home\SearchPage.razor" />
 		<_ContentIncludedByDefault Remove="Features\Home\TrailCard.razor" />
 		<_ContentIncludedByDefault Remove="Features\Home\TrailDetails.razor" />
@@ -70,7 +71,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Watch Remove="Features\Home\SearchFilter.razor.scss" />
 	  <Watch Remove="Features\Home\TrailSearch.razor.scss" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Features\Home\SearchFilter.razor" />
 	</ItemGroup>
 
 </Project>

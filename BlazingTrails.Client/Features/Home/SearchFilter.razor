@@ -1,0 +1,29 @@
+﻿@inject NavigationManager Navigation
+
+<div class="filters">
+    <label for="maxLength">Max Length</label>
+    <input id="maxLength"
+           type="number"
+           class="form-control"
+           @bind="_maxLength"/>
+    <button class="btn btn-outline-primary" @onclick="FilterSearchResults">Filter</button>
+    <button class="btn btn-outline-secondary" @onclick="ClearSearchFilter">Clear</button>
+</div>
+
+@code {
+    private int _maxLength;
+
+    [Parameter, EditorRequired]
+    public string SearchTerm { get; set; } = default!;
+
+    private void FilterSearchResults()
+    {
+        Navigation.NavigateTo($"/search/{SearchTerm}/maxLength/{_maxLength}");
+    }
+
+    private void ClearSearchFilter()
+    {
+        _maxLength = 0;
+        Navigation.NavigateTo($"/search/{SearchTerm}");
+    }
+}
