@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -23,6 +23,8 @@
 		<_ContentIncludedByDefault Remove="Features\Home\TrailCard.razor" />
 		<_ContentIncludedByDefault Remove="Features\Home\TrailDetails.razor" />
 		<_ContentIncludedByDefault Remove="Features\Layout\Header.razor" />
+		<_ContentIncludedByDefault Remove="Features\ManageTrails\FormSection.razor" />
+		<_ContentIncludedByDefault Remove="Features\ManageTrails\_Imports.razor" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -73,6 +75,7 @@
 	<ItemGroup>
 	  <Watch Remove="Features\Home\SearchFilter.razor.scss" />
 	  <Watch Remove="Features\Home\TrailSearch.razor.scss" />
+	  <Watch Remove="Features\ManageTrails\FormSection.razor.scss" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -81,6 +84,14 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\BlazingTrails.Shared\BlazingTrails.Shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Features\ManageTrails\_Imports.razor" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Features\ManageTrails\FormSection.razor" />
 	</ItemGroup>
 
 </Project>

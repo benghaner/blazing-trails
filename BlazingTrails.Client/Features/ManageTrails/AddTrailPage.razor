@@ -1,0 +1,60 @@
+﻿@page "/add-trail"
+
+<PageTitle>Add Trail - Blazing Trails</PageTitle>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Add Trail</li>
+    </ol>
+</nav>
+
+<h3 class="mt-5 mb-4">Add a trail</h3>
+
+<EditForm Model="_trail" OnValidSubmit="SubmitForm">
+    <FormSection Title="Basic Details"
+                 HelpText="This information can be used to identify the trail and can be searched to help hikers find it.">
+
+        <div class="row mb-2">
+            <div class="col-6">
+                <label for="trailName" class="form-label">Name</label>
+                <InputText @bind-Value="_trail.Name" class="form-control" id="trailName"/>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col">
+                <label for="trailDescription" class="form-label">Description</label>
+                <InputTextArea @bind-Value="_trail.Description" rows="6" class="form-control" id="trailDescription"/>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-6">
+                <label for="trailLocation" class="form-label">Location</label>
+                <InputText @bind-Value="_trail.Location" class="form-control" id="trailLocation"/>
+            </div>
+        </div>
+
+    </FormSection>
+    <div class="mt-4 mb-5">
+        <div class="row">
+            <div>
+                <button class="btn btn-primary" type="submit">Submit</button>
+                <button class="btn btn-outline-secondary" type="button" @onclick="() => _trail = new TrailDto()">Reset</button>
+            </div>
+        </div>
+    </div>
+</EditForm>
+
+@code {
+    private TrailDto _trail = new();
+
+    private async Task SubmitForm()
+    {
+    // TODO: Submit data to API
+    }
+
+}
