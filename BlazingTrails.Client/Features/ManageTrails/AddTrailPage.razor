@@ -33,12 +33,50 @@
         </FormControlSet>
 
     </FormSection>
-    
-    <FormSection Title="Difficult" HelpText="Help other hikers out by telling them the length of the trail is how long it might take them.">
+
+    <FormSection Title="Difficulty"
+                 HelpText="Help other hikers out by telling them the length of the trail is how long it might take them.">
+
         <FormControlSet Width="col-3">
             <label for="trailLength" class="form-label">Length (km)</label>
-            <InputNumber @bind-Value="_trail.Length" class="form-control" id="trailLength"></InputNumber>
+            <InputNumber @bind-Value="_trail.Length" class="form-control" id="trailLength"/>
         </FormControlSet>
+
+    </FormSection>
+
+    <FormSection Title="Route Instructions"
+                 HelpText="Route instructions are a guide for the trail. This helps hikers new to the trail stay on track.">
+
+        @{ var i = 0; }
+        @foreach (var routeInstruction in _trail.Route)
+        {
+            i++;
+            routeInstruction.Stage = i;
+
+            <label for="routeInstructionDescription" class="form-label" hidden="@(i > 1)">Stage</label>
+            <div class="input-group mb-2">
+                <span class="input-group-text">@routeInstruction.Stage</span>
+                <InputText @bind-Value="routeInstruction.Description"
+                           class="form-control"
+                           placeholder="@(i == 1 ? "Description..." : "")"
+                           id="routeInstructionDescription"/>
+                <button type="button"
+                        class="btn btn-outline-danger"
+                        @onclick="() => _trail.Route.Remove(routeInstruction)">
+                    <i class="bi bi-trash3"/>
+                </button>
+            </div>
+        }
+
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-outline-primary"
+                        type="button"
+                        @onclick="() => _trail.Route.Add(new TrailDto.RouteInstruction())">
+                    Add Instruction
+                </button>
+            </div>
+        </div>
     </FormSection>
 
     <div class="mt-4 mb-5">
@@ -56,6 +94,7 @@
 
     private async Task SubmitForm()
     {
+        await Task.Delay(1);
     // TODO: Submit data to API
     }
 
