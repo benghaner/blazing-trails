@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -77,6 +77,10 @@
 
 	<ItemGroup>
 	  <UpToDateCheckInput Remove="Features\Home\SearchFilter.razor" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\BlazingTrails.Shared\BlazingTrails.Shared.csproj" />
 	</ItemGroup>
 
 </Project>
