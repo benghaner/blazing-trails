@@ -17,28 +17,30 @@
     <FormSection Title="Basic Details"
                  HelpText="This information can be used to identify the trail and can be searched to help hikers find it.">
 
-        <div class="row mb-2">
-            <div class="col-6">
-                <label for="trailName" class="form-label">Name</label>
-                <InputText @bind-Value="_trail.Name" class="form-control" id="trailName"/>
-            </div>
-        </div>
+        <FormControlSet Width="col-6">
+            <label for="trailName" class="form-label">Name</label>
+            <InputText @bind-Value="_trail.Name" class="form-control" id="trailName"/>
+        </FormControlSet>
 
-        <div class="row mb-2">
-            <div class="col">
-                <label for="trailDescription" class="form-label">Description</label>
-                <InputTextArea @bind-Value="_trail.Description" rows="6" class="form-control" id="trailDescription"/>
-            </div>
-        </div>
+        <FormControlSet>
+            <label for="trailDescription" class="form-label">Description</label>
+            <InputTextArea @bind-Value="_trail.Description" rows="6" class="form-control" id="trailDescription"/>
+        </FormControlSet>
 
-        <div class="row mb-2">
-            <div class="col-6">
-                <label for="trailLocation" class="form-label">Location</label>
-                <InputText @bind-Value="_trail.Location" class="form-control" id="trailLocation"/>
-            </div>
-        </div>
+        <FormControlSet Width="col-6">
+            <label for="trailLocation" class="form-label">Location</label>
+            <InputText @bind-Value="_trail.Location" class="form-control" id="trailLocation"/>
+        </FormControlSet>
 
     </FormSection>
+    
+    <FormSection Title="Difficult" HelpText="Help other hikers out by telling them the length of the trail is how long it might take them.">
+        <FormControlSet Width="col-3">
+            <label for="trailLength" class="form-label">Length (km)</label>
+            <InputNumber @bind-Value="_trail.Length" class="form-control" id="trailLength"></InputNumber>
+        </FormControlSet>
+    </FormSection>
+
     <div class="mt-4 mb-5">
         <div class="row">
             <div>

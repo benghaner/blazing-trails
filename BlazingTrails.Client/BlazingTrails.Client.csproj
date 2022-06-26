@@ -23,6 +23,7 @@
 		<_ContentIncludedByDefault Remove="Features\Home\TrailCard.razor" />
 		<_ContentIncludedByDefault Remove="Features\Home\TrailDetails.razor" />
 		<_ContentIncludedByDefault Remove="Features\Layout\Header.razor" />
+		<_ContentIncludedByDefault Remove="Features\ManageTrails\FormControlSet.razor" />
 		<_ContentIncludedByDefault Remove="Features\ManageTrails\FormSection.razor" />
 		<_ContentIncludedByDefault Remove="Features\ManageTrails\_Imports.razor" />
 	</ItemGroup>
@@ -92,6 +93,10 @@
 
 	<ItemGroup>
 	  <UpToDateCheckInput Remove="Features\ManageTrails\FormSection.razor" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Features\ManageTrails\FormControlSet.razor" />
 	</ItemGroup>
 
 </Project>
