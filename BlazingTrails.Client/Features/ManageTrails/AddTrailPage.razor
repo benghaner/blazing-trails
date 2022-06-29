@@ -14,22 +14,27 @@
 <h3 class="mt-5 mb-4">Add a trail</h3>
 
 <EditForm Model="_trail" OnValidSubmit="SubmitForm">
+    <FluentValidationValidator/>
+
     <FormSection Title="Basic Details"
                  HelpText="This information can be used to identify the trail and can be searched to help hikers find it.">
 
         <FormControlSet Width="col-6">
             <label for="trailName" class="form-label">Name</label>
             <InputText @bind-Value="_trail.Name" class="form-control" id="trailName"/>
+            <ValidationMessage For="() => _trail.Name"/>
         </FormControlSet>
 
         <FormControlSet>
             <label for="trailDescription" class="form-label">Description</label>
             <InputTextArea @bind-Value="_trail.Description" rows="6" class="form-control" id="trailDescription"/>
+            <ValidationMessage For="() => _trail.Description"/>
         </FormControlSet>
 
         <FormControlSet Width="col-6">
             <label for="trailLocation" class="form-label">Location</label>
             <InputText @bind-Value="_trail.Location" class="form-control" id="trailLocation"/>
+            <ValidationMessage For="() => _trail.Location"/>
         </FormControlSet>
 
     </FormSection>
@@ -40,6 +45,7 @@
         <FormControlSet Width="col-3">
             <label for="trailLength" class="form-label">Length (km)</label>
             <InputNumber @bind-Value="_trail.Length" class="form-control" id="trailLength"/>
+            <ValidationMessage For="() => _trail.Length"/>
         </FormControlSet>
 
     </FormSection>
@@ -66,6 +72,7 @@
                     <i class="bi bi-trash3"/>
                 </button>
             </div>
+            <ValidationMessage For="() => routeInstruction.Description"/>
         }
 
         <div class="row">
@@ -75,6 +82,7 @@
                         @onclick="() => _trail.Route.Add(new TrailDto.RouteInstruction())">
                     Add Instruction
                 </button>
+                <ValidationMessage For="() => _trail.Route"/>
             </div>
         </div>
     </FormSection>
