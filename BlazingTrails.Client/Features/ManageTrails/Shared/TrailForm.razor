@@ -93,7 +93,7 @@
 @code {
 
     [Parameter]
-    public Func<TrailDto, Task> OnSubmit { get; set; }
+    public Func<TrailDto, Task> OnSubmit { get; set; } = default!;
 
     private TrailDto _trail = new();
     private EditContext _editContext = default!;
