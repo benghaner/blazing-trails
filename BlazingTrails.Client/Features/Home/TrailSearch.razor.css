@@ -1,8 +1,3 @@
-.jumbotron {
-  background: none;
-}
-.jumbotron input {
-  border: 2px solid var(--brand);
-}
+.jumbotron { background: none; }
 
-/*# sourceMappingURL=TrailSearch.razor.css.map */
+.jumbotron input { border: 2px solid var(--brand); }
