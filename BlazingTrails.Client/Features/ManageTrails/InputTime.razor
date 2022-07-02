@@ -1,0 +1,57 @@
+﻿@inherits InputBase<int>
+
+<div class="d-flex gap-3">
+    <div class="d-flex align-items-center gap-1">
+        <input type="number"
+               min="0"
+               value="@_hours"
+               @onchange="SetHourValue"
+               class="form-control"
+               id="hours"/>
+        <label for="hours">Hours</label>
+    </div>
+    <div class="d-flex align-items-center gap-1">
+        <input type="number"
+               max="59"
+               value="@_minutes"
+               @onchange="SetMinuteValue"
+               class="form-control"
+               id="minutes"/>
+        <label for="minutes">Minutes</label>
+    </div>
+</div>
+
+@code {
+
+    private int _hours;
+    private int _minutes;
+
+    protected override void OnParametersSet()
+    {
+        if (CurrentValue <= 0)
+            return;
+
+        _hours = CurrentValue / 60;
+        _minutes = CurrentValue % 60;
+    }
+
+    private void SetHourValue(ChangeEventArgs args)
+    {
+        int.TryParse(args.Value?.ToString(), out _hours);
+        SetCurrentValue();
+    }
+
+    private void SetMinuteValue(ChangeEventArgs args)
+    {
+        int.TryParse(args.Value?.ToString(), out _minutes);
+        SetCurrentValue();
+    }
+
+    private void SetCurrentValue() => CurrentValue = (_hours * 60) + _minutes;
+
+    protected override bool TryParseValueFromString(string? value, out int result, out string? validationErrorMessage)
+    {
+        throw new NotImplementedException();
+    }
+
+}
