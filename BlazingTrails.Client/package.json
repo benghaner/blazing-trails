@@ -1,8 +1,0 @@
-{
-  "scripts": {
-    "sass": "sass"
-  },
-  "dependencies": {
-    "sass": "^1.52.3"
-  }
-}
