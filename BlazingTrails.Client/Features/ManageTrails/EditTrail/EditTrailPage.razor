@@ -26,7 +26,7 @@ else
     {
         <SuccessAlert Message="Your trail has been edited successfully!"/>
     }
-    else
+    else if (!string.IsNullOrEmpty(_errorMessage))
     {
         <ErrorAlert Message="@_errorMessage"/>
     }
