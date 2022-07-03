@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Home\Shared\" />
     <Folder Include="Features\ManageTrails\EditTrail\" />
     <Folder Include="Persistence\Data\" />
     <Folder Include="Persistence\Entities\" />
