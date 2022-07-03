@@ -1,0 +1,77 @@
+﻿@typeparam TItem
+
+<div>
+    <div class="mb-3 text-end">
+        <div class="btn-group">
+            <button type="button"
+                    title="Grid View"
+                    @onclick="@(() => _mode = ViewMode.Grid)"
+                    class="btn @(_mode == ViewMode.Grid ? "btn-secondary" : "btn-secondary-outline")">
+                <i class="bi bi-grid-fill"></i>
+            </button>
+            <button type="button"
+                    title="Table View"
+                    @onclick="@(() => _mode = ViewMode.Table)"
+                    class="btn @(_mode == ViewMode.Table ? "btn-secondary" : "btn-secondary-outline")">
+                <i class="bi bi-table"></i>
+            </button>
+        </div>
+    </div>
+
+    @switch (_mode)
+    {
+        case ViewMode.Grid:
+        {
+            <div class="grid">
+                @foreach (var item in Items)
+                {
+                    @GridTemplate(item)
+                }
+            </div>
+            break;
+        }
+        case ViewMode.Table:
+        {
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    @HeaderTemplate
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Items)
+                {
+                    <tr>
+                        @RowTemplate(item)
+                    </tr>
+                }
+                </tbody>
+            </table>
+            break;
+        }
+    }
+</div>
+
+@code {
+
+    [Parameter, EditorRequired]
+    public IEnumerable<TItem> Items { get; set; } = default!;
+
+    [Parameter, EditorRequired]
+    public RenderFragment<TItem> GridTemplate { get; set; } = default!;
+
+    [Parameter, EditorRequired]
+    public RenderFragment HeaderTemplate { get; set; } = default!;
+
+    [Parameter, EditorRequired]
+    public RenderFragment<TItem> RowTemplate { get; set; } = default!;
+
+    private ViewMode _mode = ViewMode.Grid;
+
+    private enum ViewMode
+    {
+        Grid,
+        Table
+    }
+
+}
