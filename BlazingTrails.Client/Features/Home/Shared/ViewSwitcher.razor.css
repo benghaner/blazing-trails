@@ -1,0 +1,25 @@
+﻿::deep .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 7rem;
+    row-gap: 4rem;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    border-collapse: collapse;
+}
+
+table ::deep th, table ::deep td {
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+
+table ::deep thead tr th {
+    border-bottom: 0.25rem solid var(--brand);
+    border-top: none;
+}
+
+table ::deep tbody tr:nth-of-type(odd) { background-color: rgba(0, 0, 0, 0.05); }
