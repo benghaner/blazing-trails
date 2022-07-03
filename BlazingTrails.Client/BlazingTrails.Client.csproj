@@ -25,6 +25,7 @@
 		<_ContentIncludedByDefault Remove="Features\Home\TrailCard.razor" />
 		<_ContentIncludedByDefault Remove="Features\Home\TrailDetails.razor" />
 		<_ContentIncludedByDefault Remove="Features\Layout\Header.razor" />
+		<_ContentIncludedByDefault Remove="Features\ManageTrails\EditTrail\EditTrailPage.razor" />
 		<_ContentIncludedByDefault Remove="Features\ManageTrails\FormControlSet.razor" />
 		<_ContentIncludedByDefault Remove="Features\ManageTrails\FormSection.razor" />
 		<_ContentIncludedByDefault Remove="Features\ManageTrails\Shared\SuccessAlert.razor" />
@@ -73,6 +74,10 @@
 
 	<ItemGroup>
 	  <UpToDateCheckInput Remove="Features\ManageTrails\Shared\SuccessAlert.razor" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Features\ManageTrails\EditTrail\EditTrailPage.razor" />
 	</ItemGroup>
 
 </Project>

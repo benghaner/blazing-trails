@@ -1,4 +1,5 @@
-﻿@using BlazingTrails.Client.Validation
+﻿@using BlazingTrails.Shared.Features.ManageTrails.Shared
+@using BlazingTrails.Client.Validation
 
 <EditForm EditContext="_editContext" OnValidSubmit="SubmitForm">
     <FluentValidationValidator/>
@@ -62,7 +63,7 @@
                 <button type="button"
                         class="btn btn-outline-danger"
                         @onclick="() => _trail.Route.Remove(routeInstruction)">
-                    <i class="bi bi-trash3"/>
+                    <i class="bi bi-trash3"></i>
                 </button>
             </div>
             <ValidationMessage For="() => routeInstruction.Description"/>
@@ -93,15 +94,33 @@
 @code {
 
     [Parameter]
+    public TrailDto? Trail { get; set; }
+
+    [Parameter]
     public Func<TrailDto, Task> OnSubmit { get; set; } = default!;
 
     private TrailDto _trail = new();
     private EditContext _editContext = default!;
 
-    protected override void OnInitialized()
+    protected override void OnParametersSet()
     {
         _editContext = new EditContext(_trail);
         _editContext.SetFieldCssClassProvider(new BootstrapCssClassProvider());
+
+        if (Trail == null) return;
+
+        _trail.Id = Trail.Id;
+        _trail.Name = Trail.Name;
+        _trail.Description = Trail.Description;
+        _trail.Location = Trail.Location;
+        _trail.Length = Trail.Length;
+        _trail.TimeInMinutes = Trail.TimeInMinutes;
+        _trail.Route.Clear();
+        _trail.Route.AddRange(Trail.Route.Select(ri => new TrailDto.RouteInstruction
+        {
+            Stage = ri.Stage,
+            Description = ri.Description
+        }));
     }
 
     public void ResetForm()
