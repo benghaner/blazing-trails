@@ -16,6 +16,7 @@ public class EditTrailEndpoint : BaseAsyncEndpoint.WithRequest<EditTrailRequest>
         _context = context;
     }
 
+    [HttpPut(EditTrailRequest.RouteTemplate)]
     public override async Task<ActionResult<bool>> HandleAsync(EditTrailRequest request,
         CancellationToken cancellationToken = default)
     {
