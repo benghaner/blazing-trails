@@ -1,0 +1,52 @@
+﻿@page "/add-trail"
+@using BlazingTrails.Shared.Features.ManageTrails.Shared
+@using BlazingTrails.Shared.Features.ManageTrails.AddTrail
+@inject IMediator Mediator
+
+<PageTitle>Add Trail - Blazing Trails</PageTitle>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Add Trail</li>
+    </ol>
+</nav>
+
+<h3 class="mt-5 mb-4">Add a trail</h3>
+
+@if (_submitSuccessful)
+{
+    <SuccessAlert Message="Your trail has been added successfully!"/>
+}
+else if (_errorMessage is not null)
+{
+    <ErrorAlert Message="@_errorMessage"/>
+}
+
+<TrailForm @ref="_trailForm" OnSubmit="SubmitNewTrail"></TrailForm>
+
+@code {
+    private bool _submitSuccessful;
+    private string? _errorMessage;
+    private TrailForm _trailForm = default!;
+
+    private async Task SubmitNewTrail(TrailDto trail)
+    {
+        var response = await Mediator.Send(new AddTrailRequest(trail));
+
+        if (response.TrailId == -1)
+        {
+            _submitSuccessful = false;
+            _errorMessage = "There was a problem saving your trail.";
+            StateHasChanged();
+            return;
+        }
+
+        _submitSuccessful = true;
+        _errorMessage = null;
+        _trailForm.ResetForm();
+    }
+
+}
